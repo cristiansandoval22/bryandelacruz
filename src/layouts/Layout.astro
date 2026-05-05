@@ -1,0 +1,87 @@
+---
+import "@styles/global.css";
+import { client, urlFor } from "@lib/sanity";
+import { siteSettingsQuery } from "@lib/queries";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: any;
+	canonical?: string;
+}
+
+const { title, description, image, canonical } = Astro.props;
+
+const settings = await client.fetch(siteSettingsQuery);
+
+const siteTitle = settings?.siteTitle || "Mi Sitio";
+const siteDescription =
+	description ||
+	settings?.siteDescription ||
+	"Bienvenido a nuestro sitio web.";
+
+const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+
+const seoImage = image
+	? urlFor(image).width(1200).height(630).url()
+	: settings?.logo
+		? urlFor(settings.logo).width(1200).height(630).url()
+		: "";
+
+const favicon = settings?.favicon
+	? urlFor(settings.favicon).width(32).height(32).url()
+	: "/favicon.ico";
+
+const siteUrl = Astro.site?.toString() || "";
+const canonicalUrl =
+	canonical ||
+	(siteUrl
+		? new URL(Astro.url.pathname, siteUrl).toString()
+		: Astro.url.href);
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<!-- Básico -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Title + SEO -->
+		<title>{pageTitle}</title>
+		<meta name="description" content={siteDescription} />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<!-- Robots -->
+		<meta name="robots" content="index,follow" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href={favicon} />
+		<link rel="apple-touch-icon" href={favicon} />
+
+		<!-- Theme color -->
+		<meta name="theme-color" content="#0f2650" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_PE" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:url" content={canonicalUrl} />
+		{seoImage && <meta property="og:image" content={seoImage} />}
+		<meta property="og:site_name" content={siteTitle} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+		{seoImage && <meta name="twitter:image" content={seoImage} />}
+
+		<!-- <link rel="alternate" type="application/rss+xml" title={siteTitle} href="/rss.xml" /> -->
+	</head>
+
+	<body>
+		<slot />
+	</body>
+</html>

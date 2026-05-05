@@ -1,0 +1,13 @@
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-inline: 1rem;
+}
+
+.section {
+  padding-block: 5rem;
+}
+
+main {
+  overflow: hidden;
+}

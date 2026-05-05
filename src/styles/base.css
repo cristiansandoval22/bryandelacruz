@@ -1,0 +1,39 @@
+body {
+  background-color: var( --color-secondary);
+  color: var(--color-black);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Citas */
+blockquote {
+  border-left: 4px solid #0a00f3;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #000534;
+  font-style: italic;
+}
+
+/* Código en línea */
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: #f4f4f4;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+/* Bloques de código */
+pre {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  background-color: #f4f4f4;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  margin: 1rem 0;
+  color: #000534;
+  font-size: 0.95rem;
+}

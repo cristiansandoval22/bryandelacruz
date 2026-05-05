@@ -1,0 +1,92 @@
+---
+import "./aboutMe.css";
+import { client, urlFor } from "@lib/sanity";
+import { aboutQuery } from "@lib/queries";
+import type { AboutStat, About } from "@models/sanity";
+
+import Button from "@components/ui/Button/Button.astro";
+import SocialLink from "@components/ui/Social/SocialLink.astro";
+
+const about: About = await client.fetch(aboutQuery);
+
+// const parts = (about?.titleStyled || "").split(/(\[.*?\])/g);
+const parts = about?.titleStyled?.split(/(\(.*?\))/g) || [];
+// devuelve [
+//   "Hola ",
+//   "(UGC)",
+//   " creador"
+// ]
+---
+
+
+
+<section class="about section container" id="about">
+  <!-- Imagen -->
+  <div class="about__image">
+    <img
+      src={urlFor(about.image).url()}
+      alt={about.image?.alt || about.title}
+    />
+  </div>
+
+  <!-- Contenido -->
+  <div class="about__content">
+    <!-- Etiqueta -->
+    <span class="about__badge">{about.badge || "Sobre mí"}</span>
+
+    <!-- Título -->
+    <h2 class="about__title">
+      {
+        parts.map((part) => {
+          const isHighlight = part.startsWith("(") && part.endsWith(")");
+
+          if (isHighlight) {
+            return <span class="highlight">{part.replace(/[\(\)]/g, "")}</span>;
+          }
+
+          return part;
+        })
+      }
+    </h2>
+
+    <!-- Descripción -->
+    <div class="about__text">
+      <p>
+        {about.description}
+      </p>
+
+      <p>
+        {about.descriptionSecondary}
+      </p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="about__stats">
+      <article class="about__stat">
+        <strong>{about.stats?.[0]?.number || "+50"}</strong>
+        <span>{about.stats?.[0]?.label || "Videos creados"}</span>
+      </article>
+
+      <article class="about__stat">
+        <strong>{about.stats?.[1]?.number || "+10"}</strong>
+        <span>{about.stats?.[1]?.label || "Marcas colaboradoras"} </span>
+
+        <article class="about__stat">
+          <strong>{about.stats?.[2]?.number || "100%"}</strong>
+          <span>{about.stats?.[2]?.label || "Contenido auténtico"}</span>
+        </article>
+      </article>
+
+      <!-- CTA -->
+      <div class="about__actions">
+        <Button
+          title={about.cta?.text || "Contáctame"}
+          url={about.cta?.link || "#contacto"}
+          targetBlank={about.cta?.newTab || false}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <pre>{JSON.stringify(about, null, 2)}</pre> -->

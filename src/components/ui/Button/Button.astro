@@ -1,0 +1,32 @@
+---
+interface Props {
+    title: string,
+    url: string,
+    targetBlank?: boolean,
+}
+
+const {
+  url,
+  title,
+  targetBlank = false
+} = Astro.props;
+---
+
+
+<a
+  href={url}
+  target={targetBlank ? "_blank" : undefined}
+  rel={targetBlank ? "noopener noreferrer" : undefined}
+  class="btn"
+>
+  {title}
+</a>
+
+<style>
+    a {
+        background-color: var(--color-primary);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+</style>

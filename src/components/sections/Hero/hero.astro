@@ -1,0 +1,54 @@
+---
+import "./hero.css";
+import { client, urlFor } from "@lib/sanity";
+import { heroQuery, siteSettingsQuery } from "@lib/queries";
+import type { Hero } from "@models/sanity";
+
+import Button from "@components/ui/Button/Button.astro";
+import SocialLink from "@components/ui/Social/SocialLink.astro";
+
+const hero: Hero = await client.fetch(heroQuery);
+const settings = await client.fetch(siteSettingsQuery);
+---
+
+<!-- <pre>{JSON.stringify(hero, null, 2)}</pre>
+<pre>{JSON.stringify(settings, null, 2)}</pre> -->
+
+{
+    hero?.isActive && (
+        <section class="hero container" aria-label="Presentación de Bryan">
+            <div class="hero__photo">
+                <img
+                    src={urlFor(hero.heroImage).url()}
+                    alt={hero.heroImage?.alt || hero.title}
+                />
+            </div>
+
+            <div class="hero__content">
+                <h1 class="hero__title">{hero.title}</h1>
+                <Button
+                    title={settings.cta.text || "Contáctame"}
+                    url={settings.cta.link || "#contacto"}
+                    targetBlank={settings.cta.newTab || false}
+                />
+                <div class="hero__actions">
+                    <div class="hero__socials" aria-label="Redes sociales">
+                        {settings.socialLinks?.map((item: any) => (
+                            <SocialLink
+                                url={item.url}
+                                socialMedia={
+                                    item.platform.toLowerCase() === "instagram"
+                                        ? "mdi--instagram"
+                                        : item.platform.toLowerCase() ===
+                                            "tiktok"
+                                          ? "ic--baseline-tiktok"
+                                          : "simple-icons--linktree"
+                                }
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
