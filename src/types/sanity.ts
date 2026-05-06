@@ -91,6 +91,7 @@ export interface ServicesSection {
   title: string;
   subtitle?: string;
   isActive: boolean;
+  servicesImage?: SanityImage;
 
   services?: {
     title: string;

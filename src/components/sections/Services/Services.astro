@@ -1,0 +1,67 @@
+---
+import "./Services.css";
+import { client, urlFor } from "@lib/sanity";
+import { servicesSectionQuery } from "@lib/queries";
+import type { ServicesSection } from "@models/sanity";
+
+const servicesSection: ServicesSection =
+    await client.fetch(servicesSectionQuery);
+---
+
+{
+    servicesSection?.isActive && (
+        <section class="services grid container">
+            <div class="services__container">
+                <div class="services__content">
+                    <h2 class="services__title">{servicesSection?.title}</h2>
+                    <p class="services__subtitle">
+                        {servicesSection?.subtitle}
+                    </p>
+
+                    <ul class="services__list">
+                        {servicesSection?.services?.map((service) => (
+                            <li class="services__item grid">
+                                <div class="services__icon-wrapper">
+                                    <img
+                                        src={urlFor(service.image)
+                                            .width(80)
+                                            .auto("format")
+                                            .url()}
+                                        alt={
+                                            service.image?.alt || service.title
+                                        }
+                                        class="services__icon"
+                                        loading="lazy"
+                                    />
+                                </div>
+                                <div class="services__info">
+                                    <h3 class="services__item-title">
+                                        {service.title}
+                                    </h3>
+                                    <p class="services__item-text">
+                                        {service.description}
+                                    </p>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div class="services__media">
+                    <div class="services__image-container">
+                        <img
+                            src={urlFor(servicesSection?.servicesImage)
+                                .width(600)
+                                .auto("format")
+                                .url()}
+                            alt={servicesSection?.servicesImage?.alt || "Servicios"}
+                            class="services__image"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+<!-- <pre>{JSON.stringify(servicesSection, null, 2)}</pre> -->

@@ -1,9 +1,6 @@
 export const heroQuery = `
 *[_id == "hero"][0]{
   title,
-
- 
-
   heroImage{
     alt,
     asset
@@ -60,7 +57,10 @@ export const servicesSectionQuery = `
   title,
   subtitle,
   isActive,
-
+  servicesImage{
+    alt,
+    asset
+  },
   services[]{
     title,
     description,

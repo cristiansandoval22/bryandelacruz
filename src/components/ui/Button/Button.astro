@@ -1,19 +1,15 @@
 ---
 interface Props {
-    title: string,
-    url: string,
-    targetBlank?: boolean,
+  title: string;
+  url: string;
+  targetBlank?: boolean;
 }
 
-const {
-  url,
-  title,
-  targetBlank = false
-} = Astro.props;
+const { url, title, targetBlank = false } = Astro.props;
 ---
 
-
-<a
+<a 
+  class="hvr-grow-rotate"
   href={url}
   target={targetBlank ? "_blank" : undefined}
   rel={targetBlank ? "noopener noreferrer" : undefined}
@@ -23,10 +19,26 @@ const {
 </a>
 
 <style>
-    a {
-        background-color: var(--color-primary);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 8px;
-    }
+  a {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+  }
+  .hvr-grow-rotate {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow-rotate:hover, .hvr-grow-rotate:focus, .hvr-grow-rotate:active {
+  -webkit-transform: scale(1.1) rotate(4deg);
+  transform: scale(1.1) rotate(4deg);
+}
 </style>

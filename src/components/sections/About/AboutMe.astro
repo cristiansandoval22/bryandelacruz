@@ -11,6 +11,7 @@ const about: About = await client.fetch(aboutQuery);
 
 // const parts = (about?.titleStyled || "").split(/(\[.*?\])/g);
 const parts = about?.titleStyled?.split(/(\(.*?\))/g) || [];
+
 // devuelve [
 //   "Hola ",
 //   "(UGC)",
@@ -18,11 +19,9 @@ const parts = about?.titleStyled?.split(/(\(.*?\))/g) || [];
 // ]
 ---
 
-
-
-<section class="about section container" id="about">
+<section class="about section container grid" id="about">
   <!-- Imagen -->
-  <div class="about__image">
+  <div class="about__image hvr-grow-rotate">
     <img
       src={urlFor(about.image).url()}
       alt={about.image?.alt || about.title}
@@ -61,30 +60,42 @@ const parts = about?.titleStyled?.split(/(\(.*?\))/g) || [];
     </div>
 
     <!-- Estadísticas -->
-    <div class="about__stats">
-      <article class="about__stat">
-        <strong>{about.stats?.[0]?.number || "+50"}</strong>
-        <span>{about.stats?.[0]?.label || "Videos creados"}</span>
+    <div class="about__stats grid">
+      <!-- <article class="about__stat hvr-grow-shadow">
+        <h3>{about.stats?.[0]?.number || "+50"}</h3>
+        <p>{about.stats?.[0]?.label || "Videos creados"}</p>
       </article>
 
-      <article class="about__stat">
-        <strong>{about.stats?.[1]?.number || "+10"}</strong>
-        <span>{about.stats?.[1]?.label || "Marcas colaboradoras"} </span>
-
-        <article class="about__stat">
-          <strong>{about.stats?.[2]?.number || "100%"}</strong>
-          <span>{about.stats?.[2]?.label || "Contenido auténtico"}</span>
-        </article>
+      <article class="about__stat hvr-grow-shadow">
+        <h3>{about.stats?.[1]?.number || "+10"}</h3>
+        <p>{about.stats?.[1]?.label || "Marcas colaboradoras"}</p>
       </article>
 
-      <!-- CTA -->
-      <div class="about__actions">
-        <Button
-          title={about.cta?.text || "Contáctame"}
-          url={about.cta?.link || "#contacto"}
-          targetBlank={about.cta?.newTab || false}
-        />
-      </div>
+      <article class="about__stat hvr-grow-shadow">
+        <h3>{about.stats?.[2]?.number || "100%"}</h3>
+        <p>{about.stats?.[2]?.label || "Contenido auténtico"}</p>
+      </article> -->
+      {
+        about.stats && about.stats.length > 0 ? (
+          about.stats.map((stat) => (
+            <article class="about__stat hvr-grow-shadow">
+              <h3>{stat.number}</h3>
+              <p>{stat.label}</p>
+            </article>
+          ))
+        ) : (
+          <p>Cargando estadísticas...</p>
+        )
+      }
+    </div>
+
+    <!-- CTA -->
+    <div class="about__actions">
+      <Button
+        title={about.cta?.text || "Contáctame"}
+        url={about.cta?.link || "#contacto"}
+        targetBlank={about.cta?.newTab || false}
+      />
     </div>
   </div>
 </section>

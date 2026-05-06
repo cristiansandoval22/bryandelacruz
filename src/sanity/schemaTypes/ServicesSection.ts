@@ -25,7 +25,26 @@ export const servicesSectionType = defineType({
       title: "Subtítulo",
       type: "text"
     }),
+    /* =========================
+       SERVICES IMAGE
+    ========================= */
+    defineField({
+      name: "servicesImage",
+      title: "Imagen Principal",
+      type: "image",
+      options: {
+        hotspot: true
+      },
 
+      fields: [
+        defineField({
+          name: "alt",
+          title: "Texto ALT",
+          type: "string",
+          description: "Describe la imagen para SEO y accesibilidad"
+        })
+      ]
+    }),
     defineField({
       name: "services",
       title: "Servicios",

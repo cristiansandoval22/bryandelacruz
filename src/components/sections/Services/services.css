@@ -1,0 +1,111 @@
+.services__title {
+    font-size: var(--fs-h1);
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.services__subtitle {
+    font-size: var(--fs-h2);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-familiy-secondary);
+    font-size: 2.5rem;
+    margin-top: -38px;
+}
+
+.services__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.services__list {
+    margin-bottom: 3rem;
+}
+
+.services__item {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+    margin-block: 1rem;
+    /* align-items: center; */
+    border-bottom: 0px solid red;
+}
+
+.services__icon-wrapper {
+    background-color: var(--color-primary);
+    height: fit-content;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+
+.services__item-text {
+    margin: 0;
+    text-wrap: wrap;
+}
+
+.services__image-container {
+    max-width: 350px;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-inline: 1rem;
+    rotate: 4deg;
+}
+
+/* La imagen: Se adapta al contenedor */
+.services__image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Cambiado a cover para que llene todo sin espacios */
+    object-position: center;
+    /* Asegura que el rostro/centro no se corte */
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .services__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .services__content {}
+
+    .services__media {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .services__item {
+        grid-template-columns: 50px 1fr;
+        gap: 1rem;
+        margin-block: 1rem;
+        align-items: center;
+        border-bottom: 0px solid red;
+    }
+
+    .services__item-title {
+        font-size: var(--fs-h5);
+    }
+}
+
+@media (min-width: 1024px) {}
+
+@media (min-width: 1440px) {
+    .services__image-container {
+        max-width: 400px;
+        border-radius: 1rem;
+        overflow: hidden;
+        margin-inline: 1rem;
+        rotate: 4deg;
+    }
+    .services__item-title{
+        font-size: 2rem;
+    }
+    .services__subtitle{
+        font-size: 4rem;
+
+    }
+}

@@ -6,13 +6,14 @@ import { heroQuery, siteSettingsQuery } from "@lib/queries";
 import type { Hero } from "@models/sanity";
 
 const hero: Hero = await client.fetch(heroQuery);
+const settings = await client.fetch(siteSettingsQuery);
 ---
 
 <header class="header container" aria-label="Encabezado del sitio">
     <span class="header__title">Bryan de la Cruz</span>
     <Button
         title="Contáctanos"
-        url={hero.buttonLink || "#contacto"}
-        targetBlank={hero.buttonNewTab || false}
+        url={settings?.cta?.link || "#contacto"}
+        targetBlank={settings?.cta?.newTab || false}
     />
 </header>

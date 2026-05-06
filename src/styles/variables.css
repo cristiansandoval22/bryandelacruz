@@ -18,12 +18,12 @@
   --color-black: #000;
   --color-white: #ffffff;
 } */
-
 :root {
   /* =========================
      TYPOGRAPHY
   ========================= */
   --font-family-base: "Poppins", sans-serif;
+  --font-familiy-secondary: "Authenia Textured", sans-serif;
   --line-height-base: 1.6;
 
   /* Mobile First */
