@@ -4,8 +4,14 @@ import Hero from '@components/sections/Hero/hero.astro';
 import Header from '@components/sections/Header/Header.astro';
 import AboutMe from '@components/sections/About/AboutMe.astro';
 import Services from '@components/sections/Services/Services.astro';
-import { component } from 'sanity/structure';
+import PortfolioSection from '@components/sections/Portfolio/PortfolioSection.astro';
+// import { component } from 'sanity/structure';
 
+
+Astro.response.headers.set(
+ "Cache-Control",
+ "public, s-maxage=300, stale-while-revalidate=3600"
+);
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -16,4 +22,5 @@ import { component } from 'sanity/structure';
 	<Hero />
 	<AboutMe />
 	<Services />
+	<PortfolioSection />
 </Layout>

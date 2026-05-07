@@ -1,0 +1,35 @@
+---
+import { client } from "@lib/sanity";
+import { portfolioProjectsQuery } from "@lib/queries";
+
+import "glightbox/dist/css/glightbox.min.css";
+import "./portfolio.css";
+
+import PortfolioTabs from "./PortfolioTabs.astro";
+import PortfolioGrid from "./PortfolioGrid.astro";
+
+const projects = await client.fetch(portfolioProjectsQuery);
+
+const categorySet = new Set<string>();
+
+projects.forEach((item: any) => {
+    if (item.category?.title) {
+        categorySet.add(item.category.title);
+    }
+});
+
+const categories = ["Todos", ...categorySet];
+---
+
+<section class="portfolio container">
+    <h2 class="section-title">Portafolio</h2>
+
+    <PortfolioTabs categories={categories} />
+
+    <PortfolioGrid projects={projects} />
+    <div class="portfolio__actions">
+        <button class="portfolio__more"> Ver más </button>
+    </div>
+</section>
+
+<script src="./portfolio.js"></script>
