@@ -76,9 +76,14 @@ export const servicesSectionQuery = `
 export const portfolioProjectsQuery = `
 *[_type == "portfolioProject"]{
   title,
-  projectLink,
-  projectImage,
-
+  description,
+  videoUrl,
+  thumbnail{
+    asset
+  },
+  category->{
+    title
+    }, 
   brand->{
     title,
     logo

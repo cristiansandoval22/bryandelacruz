@@ -7,7 +7,11 @@ import react from "@astrojs/react";
 export default defineConfig({
     output: "server",
     adapter: vercel(),
-
+    vite: {
+        build: {
+            chunkSizeWarningLimit: 1000
+        }
+    },
     integrations: [sanity({
         projectId: 'a00jgaaz',
         dataset: 'production',

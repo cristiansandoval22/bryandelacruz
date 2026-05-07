@@ -1,0 +1,20 @@
+---
+interface Props{
+  categories:string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="portfolio-tabs">
+  {categories.map((cat) => (
+    <button
+      class="portfolio-tab"
+      data-filter={cat}
+    >
+      {cat}
+    </button>
+  ))}
+</div>
+
+<script src="./portfolio-filter.js"></script>

@@ -1,0 +1,61 @@
+---
+import { urlFor } from "@lib/sanity";
+
+interface Props {
+    item: any;
+}
+
+const { item } = Astro.props;
+
+function normalizeVideoUrl(url: string) {
+    if (url.includes("youtube.com/shorts/")) {
+        const id = url.split("/shorts/")[1].split("?")[0];
+        return `https://www.youtube.com/watch?v=${id}`;
+    }
+
+    return url;
+}
+---
+
+<!-- <a
+    href={normalizeVideoUrl(item.videoUrl)}
+    class="glightbox portfolio__card"
+    data-gallery="portfolio"
+    data-type="video"
+    data-category={item.category?.title}
+>
+    <div class="portfolio__media">
+        <img src={urlFor(item.thumbnail).width(500).url()} alt={item.title} />
+
+        <span class="portfolio__play">
+            <span class="portfolio__triangle"></span>
+        </span>
+    </div>
+
+    <div class="portfolio__info">
+        <p class="portfolio__brand">{item.brand?.title}</p>
+        <h3 class="portfolio__title">{item.title}</h3>
+        <p class="portfolio__description">{item.description}</p>
+    </div>
+</a> -->
+
+<article class="portfolio__card">
+    <div class="portfolio__media">
+        <img src={urlFor(item.thumbnail).width(500).url()} alt={item.title} />
+
+        <a
+            href={normalizeVideoUrl(item.videoUrl)}
+            class="portfolio__play glightbox"
+            data-gallery="portfolio"
+            data-type="video"
+        >
+            <span class="portfolio__triangle"></span>
+        </a>
+    </div>
+
+    <div class="portfolio__info">
+        <p class="portfolio__brand">{item.brand?.title}</p>
+        <h3 class="portfolio__title">{item.title}</h3>
+        <p class="portfolio__description">{item.description}</p>
+    </div>
+</article>

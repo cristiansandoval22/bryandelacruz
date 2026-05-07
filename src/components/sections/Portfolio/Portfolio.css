@@ -1,0 +1,318 @@
+/* ========================================
+   PORTFOLIO SECTION
+======================================== */
+
+.portfolio {
+   padding-block: 4rem;
+}
+
+.section-title {
+   font-size: clamp(2rem, 4vw, 3rem);
+   margin-bottom: 2rem;
+}
+
+
+/* ========================================
+   PORTFOLIO TABS
+======================================== */
+
+.portfolio-tabs {
+   display: flex;
+   gap: .75rem;
+   overflow-x: auto;
+   padding-bottom: .5rem;
+   margin-bottom: 2rem;
+   scrollbar-width: none;
+}
+
+.portfolio-tabs::-webkit-scrollbar {
+   display: none;
+}
+
+.portfolio-tab {
+   border: none;
+   background: #f1f1f1;
+   padding: .8rem 1.2rem;
+   border-radius: 999px;
+   cursor: pointer;
+   white-space: nowrap;
+   font-weight: 600;
+   font-size: .95rem;
+   transition: .25s ease;
+   flex-shrink: 0;
+}
+
+.portfolio-tab.active {
+   background: var(--color-primary);
+   color: #fff;
+}
+
+
+/* ========================================
+   PORTFOLIO GRID
+======================================== */
+
+.portfolio__grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 1.25rem;
+}
+
+
+/* ========================================
+   PORTFOLIO CARD
+======================================== */
+
+.portfolio__card {
+   display: block;
+   text-decoration: none;
+   color: inherit;
+   border-radius: 1rem;
+   overflow: hidden;
+   background: #fff;
+   transition: .3s ease;
+   position: relative;
+}
+
+.portfolio__info {
+   position: absolute;
+   bottom: -100%;
+   left: 0;
+   width: 100%;
+   padding: 1rem;
+   background: rgba(0, 0, 0, 0.5);
+   color: #fff;
+   transition: 0.5s ease;
+   border-radius: 1rem 1rem 0 0;
+}
+
+.portfolio__brand {
+   background: var(--color-primary);
+   color: var(--color-white);
+   display: inline-block;
+   padding: .25rem .75rem;
+   border-radius: 0.25rem;
+}
+
+.portfolio__title {
+   font-size: 1rem;
+   line-height: 1.4;
+   margin: 0 0 .35rem;
+}
+
+.portfolio__description {
+   opacity: .5;
+   margin: 0;
+   line-height: 1.3;
+}
+
+
+/* ========================================
+   PORTFOLIO MEDIA
+======================================== */
+
+.portfolio__media {
+   position: relative;
+   overflow: hidden;
+   border-radius: 1rem 1rem 0 0;
+}
+
+.portfolio__media img {
+   width: 100%;
+   display: block;
+   aspect-ratio: 9/16;
+   object-fit: cover;
+   transition: transform .5s ease;
+}
+
+
+/* ========================================
+   PLAY BUTTON
+======================================== */
+
+.portfolio__play {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) scale(.85);
+
+   width: 72px;
+   height: 72px;
+   border-radius: 50%;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   background: rgba(216, 87, 52, .18);
+   border: 1px solid rgba(255, 255, 255, .25);
+
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+
+   box-shadow:
+      0 10px 30px rgba(0, 0, 0, .18),
+      inset 0 1px 0 rgba(255, 255, 255, .2);
+
+   opacity: 0;
+   pointer-events: none;
+   transition: .5s ease;
+   z-index: 5;
+   pointer-events: auto;
+   cursor: pointer;
+}
+
+.portfolio__triangle {
+   width: 0;
+   height: 0;
+   margin-left: 4px;
+
+   border-left: 18px solid #fff;
+   border-top: 11px solid transparent;
+   border-bottom: 11px solid transparent;
+}
+
+
+/* ========================================
+   HOVER EFFECTS
+======================================== */
+
+.portfolio__card:hover .portfolio__play {
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
+}
+
+.portfolio__card:hover .portfolio__media img {
+   transform: scale(1.05);
+}
+
+.portfolio__card:hover .portfolio__play {
+   box-shadow:
+      0 0 0 8px rgba(216, 87, 52, .08),
+      0 12px 35px rgba(216, 87, 52, .35);
+}
+
+.portfolio__card:hover .portfolio__info {
+   bottom: 0;
+}
+
+
+.portfolio__actions {
+   margin-top: 2rem;
+   text-align: center;
+}
+
+.portfolio__more {
+   border: none;
+   padding: 1rem 1.5rem;
+   border-radius: 999px;
+   cursor: pointer;
+   background: #D85734;
+   color: #fff;
+   font-weight: 700;
+   transition: .25s;
+}
+
+.portfolio__more:hover {
+   transform: translateY(-2px);
+   opacity: .9;
+}
+
+/* ========================================
+   RESPONSIVE MOBILE
+======================================== */
+
+@media (max-width:767px) {
+
+   .portfolio__play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      width: 60px;
+      height: 60px;
+   }
+
+   .portfolio__triangle {
+      border-left: 15px solid #fff;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+   }
+
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (min-width:768px) {
+
+   .portfolio {
+      padding-block: 5rem;
+   }
+
+   .portfolio__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+   }
+
+   .portfolio__info h3 {
+      font-size: 1.05rem;
+   }
+
+}
+
+
+/* ========================================
+   RESPONSIVE DESKTOP
+======================================== */
+
+@media (min-width:1024px) {
+
+   .portfolio__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+   }
+
+   .portfolio__card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+   }
+
+   .portfolio__info h3 {
+      font-size: 1.1rem;
+   }
+
+}
+
+
+/* ========================================
+   RESPONSIVE LARGE
+======================================== */
+
+/* @media (min-width:1400px) {
+
+   .portfolio__grid {
+      grid-template-columns: repeat(4, 1fr);
+   }
+
+} */
+
+
+
+/* Contenedor del modal */
+
+/* .gslide-video {
+   max-width: 420px !important;
+   margin: auto;
+} */
+
+/* iframe/video */
+
+/* .gslide-video iframe,
+.gslide-video video {
+   aspect-ratio: 9/16 !important;
+   width: 100% !important;
+   height: auto !important;
+   border-radius: 1rem;
+   overflow: hidden;
+} */

@@ -1,0 +1,13 @@
+---
+import PortfolioCard from "./PortfolioCard.astro";
+
+interface Props {
+    projects: any[];
+}
+
+const { projects } = Astro.props;
+---
+
+<div class="portfolio__grid">
+    {projects.map((item: any) => <PortfolioCard item={item} />)}
+</div>
