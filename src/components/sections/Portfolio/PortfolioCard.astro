@@ -39,7 +39,7 @@ function normalizeVideoUrl(url: string) {
     </div>
 </a> -->
 
-<article class="portfolio__card">
+<article class="portfolio__card" data-category={item.category.title}>
     <div class="portfolio__media">
         <img src={urlFor(item.thumbnail).width(500).url()} alt={item.title} />
 
@@ -48,6 +48,7 @@ function normalizeVideoUrl(url: string) {
             class="portfolio__play glightbox"
             data-gallery="portfolio"
             data-type="video"
+            
         >
             <span class="portfolio__triangle"></span>
         </a>
