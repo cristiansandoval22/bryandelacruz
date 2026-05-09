@@ -1,28 +1,28 @@
- .hero__photo {
+.hero__photo {
      display: flex;
      align-items: center;
      justify-content: center;
      margin-bottom: 1rem;
-     
+
  }
 
- .hero__content {
+.hero__content {
      text-align: center;
      margin-top: 1.5rem;
  }
 
- .hero__title {
+.hero__title {
      font-weight: bold;
      text-align: center;
      text-transform: uppercase;
      margin-bottom: 1rem;
  }
 
- .hero__actions {
+.hero__actions {
      margin-top: 2rem;
  }
 
- .hero__socials {
+.hero__socials {
      display: flex;
      justify-content: center;
      gap: 1rem;

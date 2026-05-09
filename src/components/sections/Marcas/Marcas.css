@@ -1,0 +1,208 @@
+/* ==================================================
+   BRANDS SECTION
+================================================== */
+
+/* Title */
+
+/* .brand__title {
+  color: var(--color-primary);
+} */
+
+.brands__list {
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 20px;
+}
+
+/* ==================================================
+   BRAND CARD
+================================================== */
+
+.brand__item {
+  width: 100%;
+  
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-white);
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+/* Hover */
+
+.brand__item:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, .08);
+}
+
+/* ==================================================
+   BRAND IMAGE
+================================================== */
+
+.brand__figure {
+  margin: 0 0 .5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.brand__image {
+  width: 100%;
+  max-width: 100%;
+  height: 5rem;
+
+  object-fit: contain;
+  object-position: center;
+
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+
+/* Hover image */
+
+.brand__item:hover .brand__image {
+  transform: scale(1.04);
+}
+
+/* ==================================================
+   BRAND TEXT
+================================================== */
+
+.brand__caption {
+  line-height: 1.2;
+  text-align: center;
+
+  color: #18181b;
+}
+
+/* ==================================================
+   CTA CARD
+================================================== */
+
+.brand__item--cta {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 120px;
+  padding: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: var(--color-white);
+  border: 3px dashed var(--color-primary);
+  border-radius: 1rem;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.brand__item--cta:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 12px 30px rgba(216, 88, 52, .18);
+}
+
+/* ==================================================
+   CTA GLITTER EFFECT
+================================================== */
+
+.brand__glitter {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(216, 88, 52, .24) 50%,
+    transparent 100%
+  );
+
+  transform: translateX(-100%);
+  animation: brand-glitter 3s ease-in-out infinite;
+}
+
+/* ==================================================
+   CTA TEXT
+================================================== */
+
+.brand__cta-text {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-primary);
+}
+
+/* ==================================================
+   ANIMATION
+================================================== */
+
+@keyframes brand-glitter {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .brands__list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+/* 
+  .brand__item {
+    min-height: 140px;
+    padding: 1.25rem;
+  }
+
+  .brand__image {
+    height: 5.5rem;
+  }
+
+  .brand__caption {
+    font-size: .8rem;
+  } */
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .brands__list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

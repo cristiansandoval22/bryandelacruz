@@ -62,7 +62,14 @@ export interface SiteSettings {
   socialLinks?: SocialLink[];
   favicon?: SanityImage;
   logo?: SanityImage;
+  cta?: {
+    text: string;
+    link: string;
+    newTab: boolean;
+  };
 }
+
+
 
 /* PORTFOLIO */
 
@@ -105,6 +112,9 @@ export interface Brand {
   title: string;
   logo?: SanityImage;
   // website?: string;
+  isActive?: boolean;
+  altText?: string;
+  
 }
 
 export interface PortfolioProject {

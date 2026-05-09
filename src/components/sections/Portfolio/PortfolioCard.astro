@@ -16,29 +16,6 @@ function normalizeVideoUrl(url: string) {
     return url;
 }
 ---
-
-<!-- <a
-    href={normalizeVideoUrl(item.videoUrl)}
-    class="glightbox portfolio__card"
-    data-gallery="portfolio"
-    data-type="video"
-    data-category={item.category?.title}
->
-    <div class="portfolio__media">
-        <img src={urlFor(item.thumbnail).width(500).url()} alt={item.title} />
-
-        <span class="portfolio__play">
-            <span class="portfolio__triangle"></span>
-        </span>
-    </div>
-
-    <div class="portfolio__info">
-        <p class="portfolio__brand">{item.brand?.title}</p>
-        <h3 class="portfolio__title">{item.title}</h3>
-        <p class="portfolio__description">{item.description}</p>
-    </div>
-</a> -->
-
 <article class="portfolio__card" data-category={item.category.title}>
     <div class="portfolio__media">
         <img src={urlFor(item.thumbnail).width(500).url()} alt={item.title} />

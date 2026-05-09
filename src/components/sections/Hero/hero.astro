@@ -1,14 +1,29 @@
 ---
 import "./hero.css";
-import { client, urlFor } from "@lib/sanity";
+import { client, urlFor} from "@lib/sanity";
 import { heroQuery, siteSettingsQuery } from "@lib/queries";
-import type { Hero } from "@models/sanity";
+import type { Hero, SiteSettings } from "@models/sanity";
 
 import Button from "@components/ui/Button/Button.astro";
 import SocialLink from "@components/ui/Social/SocialLink.astro";
 
+// Diferencia:
+//
+// const hero: Hero = await client.fetch(heroQuery);
+// 👉 Aquí le decimos a TypeScript que la respuesta debe cumplir
+//    la interfaz Hero. Obtienes autocompletado, validación y menos errores.
+//
+// const settings = await client.fetch(siteSettingsQuery);
+// 👉 Aquí NO se especifica tipo. TypeScript intentará inferirlo,
+//    pero normalmente queda como any o unknown según configuración.
+//    Menos seguro y menos ayuda del editor.
+//
+// Recomendación:
+// Usa tipado explícito cuando conozcas la estructura.
+//
+// Ejemplo ideal:
 const hero: Hero = await client.fetch(heroQuery);
-const settings = await client.fetch(siteSettingsQuery);
+const settings: SiteSettings = await client.fetch(siteSettingsQuery);
 ---
 
 <!-- <pre>{JSON.stringify(hero, null, 2)}</pre>
@@ -16,7 +31,7 @@ const settings = await client.fetch(siteSettingsQuery);
 
 {
     hero?.isActive && (
-        <section class="hero container" aria-label="Presentación de Bryan">
+        <section class="hero section container" aria-label="Presentación de Bryan">
             <div class="hero__photo">
                 <img
                     src={urlFor(hero.heroImage).url()}
@@ -27,9 +42,9 @@ const settings = await client.fetch(siteSettingsQuery);
             <div class="hero__content">
                 <h1 class="hero__title">{hero.title}</h1>
                 <Button
-                    title={settings.cta.text || "Contáctame"}
-                    url={settings.cta.link || "#contacto"}
-                    targetBlank={settings.cta.newTab || false}
+                    title={settings.cta?.text || "Contáctame"}
+                    url={settings.cta?.link || "#contacto"}
+                    targetBlank={settings.cta?.newTab || false}
                 />
                 <div class="hero__actions">
                     <div class="hero__socials" aria-label="Redes sociales">

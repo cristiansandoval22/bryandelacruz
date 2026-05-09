@@ -13,3 +13,8 @@
 .flex {
   display: flex;
 }
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+} 

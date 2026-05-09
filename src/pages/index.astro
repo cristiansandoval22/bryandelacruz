@@ -1,16 +1,16 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Hero from '@components/sections/Hero/hero.astro';
-import Header from '@components/sections/Header/Header.astro';
-import AboutMe from '@components/sections/About/AboutMe.astro';
-import Services from '@components/sections/Services/Services.astro';
-import PortfolioSection from '@components/sections/Portfolio/PortfolioSection.astro';
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/sections/Hero/hero.astro";
+import Header from "@components/sections/Header/Header.astro";
+import AboutMe from "@components/sections/About/AboutMe.astro";
+import Services from "@components/sections/Services/Services.astro";
+import PortfolioSection from "@components/sections/Portfolio/PortfolioSection.astro";
+import Marcas from "@components/sections/Marcas/Marcas.astro";
 // import { component } from 'sanity/structure';
 
-
 Astro.response.headers.set(
- "Cache-Control",
- "public, s-maxage=300, stale-while-revalidate=3600"
+	"Cache-Control",
+	"public, s-maxage=300, stale-while-revalidate=3600",
 );
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -20,6 +20,7 @@ Astro.response.headers.set(
 <Layout>
 	<Header />
 	<Hero />
+	<Marcas />
 	<AboutMe />
 	<Services />
 	<PortfolioSection />

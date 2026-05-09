@@ -1,0 +1,45 @@
+---
+import "./Marcas.css";
+
+import { client, urlFor } from "@lib/sanity";
+import { marcasQuery } from "@lib/queries";
+import type { Brand } from "@models/sanity";
+
+const marcas: Brand[] = await client.fetch(marcasQuery);
+
+const activas = marcas.filter((brand) => brand.isActive);
+
+// console.log(activas);
+---
+
+<section class="brands container section">
+  <h2 class="section-title brand__title">Con la confianza de muchos ✨</h2>
+
+  <div class="brands__list grid">
+    {
+      activas.map((brand) => (
+        <article class="brand__item">
+          <figure class="brand__figure">
+            <img
+              class="brand__image"
+              src={urlFor(brand.logo).url()}
+              alt={brand.logo?.alt || brand.title}
+              loading="lazy"
+            />
+          </figure>
+
+          <p class="brand__caption">{brand.title}</p>
+        </article>
+      ))
+    }
+    <!-- <article class="brand__item">
+      <p class="brand__caption">¡Tu lugar te espera! ✨</p>
+    </article> -->
+
+    <article class="brand__item brand__item--cta">
+      <span class="brand__glitter"></span>
+
+      <p class="brand__cta-text">¡Tu lugar te espera! ✨</p>
+    </article>
+  </div>
+</section>
