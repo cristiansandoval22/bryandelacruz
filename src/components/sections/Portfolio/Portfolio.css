@@ -6,10 +6,6 @@
    padding-block: 4rem;
 }
 
-.section-title {
-   font-size: clamp(2rem, 4vw, 3rem);
-   margin-bottom: 2rem;
-}
 
 
 /* ========================================
@@ -94,10 +90,9 @@
    border-radius: 0.25rem;
 }
 
-.portfolio__title {
-   font-size: 1rem;
-   line-height: 1.4;
-   margin: 0 0 .35rem;
+.portfolio__title{
+   color: var(--color-primary);
+
 }
 
 .portfolio__description {

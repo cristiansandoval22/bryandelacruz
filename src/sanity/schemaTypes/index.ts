@@ -10,5 +10,12 @@ import { brandType } from "./brand";
 // import { serviceItemType } from "./ServiceItem";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [heroType, aboutType, siteSettingsType, portfolioCategoryType, portfolioProjectType, servicesSectionType, brandType],
+  types: [
+    heroType, 
+    aboutType, 
+    siteSettingsType, 
+    portfolioCategoryType, 
+    portfolioProjectType, 
+    servicesSectionType, 
+    brandType],
 };

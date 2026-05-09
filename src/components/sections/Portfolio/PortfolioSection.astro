@@ -19,13 +19,13 @@ projects.forEach((item: any) => {
 });
 
 const categories = ["Todos", ...categorySet];
-
-
-
+//     console.log(categories);
+// console.log(projects.brand?.title);
 ---
 
-<section class="portfolio container">
-    <h2 class="section-title">Portafolio</h2>
+<section class="portfolio section container">
+    <h2 class="section-title portfolio__title">Mi Portafolio</h2>
+
 
     <PortfolioTabs categories={categories} />
 

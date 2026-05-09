@@ -91,4 +91,14 @@ export const portfolioProjectsQuery = `
 }
 `;
 
+export const marcasQuery = `
+*[_type == "brand"]{
+  title,
+  logo{
+    asset
+  },
+  isActive
+}
+`;
+
 
