@@ -90,10 +90,7 @@
    border-radius: 0.25rem;
 }
 
-.portfolio__title{
-   color: var(--color-primary);
 
-}
 
 .portfolio__description {
    opacity: .5;

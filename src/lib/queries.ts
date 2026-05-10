@@ -102,3 +102,28 @@ export const marcasQuery = `
 `;
 
 
+export const statisticsSectionQuery = `
+*[_type == "statisticsSection"][0]{
+  isActive,
+  title,
+
+  items[]{
+    views,
+    likes,
+    comments,
+    shares,
+    saves,
+    videoUrl,
+    phoneImage,
+    platform,
+
+    brand->{
+      title,
+      logo,
+      isActive
+    }
+  }
+}
+`;
+
+
