@@ -7,6 +7,7 @@ import { portfolioCategoryType } from "./Category";
 import { portfolioProjectType } from "./Proyects";
 import { servicesSectionType } from "./ServicesSection";
 import { brandType } from "./brand";
+import {statisticsSectionType} from "./statisticsSection"
 // import { serviceItemType } from "./ServiceItem";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -17,5 +18,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     portfolioCategoryType, 
     portfolioProjectType, 
     servicesSectionType, 
-    brandType],
+    brandType,
+    statisticsSectionType
+  ],
 };

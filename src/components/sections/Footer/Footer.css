@@ -1,0 +1,29 @@
+/* FOOTER SIMPLE */
+
+.footer{
+  margin-top:4rem;
+  padding:1rem;
+  background-color: var(--color-primary);
+  
+}
+
+.footer__container{
+
+  padding:1.2rem 1.5rem;
+
+  display:grid;
+  gap:1.5rem;
+  align-items:center;
+}
+
+
+
+/* COPY */
+
+.footer__copy{
+  font-size:1rem;
+  text-align:center;
+  color: var(--color-white);
+  font-weight: 600;
+}
+

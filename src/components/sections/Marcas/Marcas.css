@@ -60,6 +60,7 @@
   border: 3px solid var(--color-primary);
   border-radius: 50%;
   overflow: hidden;
+  aspect-ratio: 1/1;
 }
 
 .brand__image {
@@ -184,11 +185,12 @@
   .brands__list {
     grid-template-columns: repeat(4, 1fr);
   }
-/* 
   .brand__item {
     min-height: 140px;
     padding: 1.25rem;
   }
+/* 
+  
 
   .brand__image {
     height: 5.5rem;

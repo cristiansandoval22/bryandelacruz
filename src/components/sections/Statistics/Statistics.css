@@ -1,0 +1,139 @@
+/* Statistics.css */
+
+.statistics{
+  padding-block: 5rem;
+}
+
+.statistics__header{
+  text-align:center;
+  margin-bottom:3rem;
+}
+
+.statistics__subtitle{
+  max-width:620px;
+  margin:1rem auto 0;
+  opacity:.75;
+}
+
+.statistics__grid{
+  display:grid;
+  gap:2rem;
+}
+
+.statistics__card{
+  background:#fff;
+  border-radius:1.5rem;
+  padding:1.25rem;
+  border:1px solid #ececec;
+
+  display:grid;
+  gap:1.25rem;
+
+  transition:.3s ease;
+}
+
+.statistics__card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+
+.statistics__phone{
+  border-radius:1rem;
+  overflow:hidden;
+}
+
+.statistics__image{
+  width:100%;
+  aspect-ratio:9/16;
+  object-fit:cover;
+  display:block;
+}
+.statics__header{
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:1rem;
+    padding-inline: 0.5rem;
+}
+.statistics__brand, .statistics__platform{
+  display:flex;
+  align-items:center;
+  gap:.75rem;
+  /* margin-bottom:1rem; */
+}
+.statistics__platform{
+    gap: 0.25rem;
+}
+
+.statistics__logo{
+  width:42px;
+  height:42px;
+  object-fit:contain;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid #eee;
+  padding:.35rem;
+}
+
+.statistics__name{
+  font-weight:700;
+}
+
+.statistics__metrics{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.75rem;
+}
+
+.statistics__metric{
+  background:#f8f8f8;
+  border-radius:1rem;
+  padding:.85rem;
+  text-align:center;
+}
+
+.statistics__value{
+  display:block;
+  font-size:1.2rem;
+  font-weight:800;
+  color:var(--color-primary);
+}
+
+.statistics__label{
+  font-size:.82rem;
+  opacity:.7;
+}
+
+.statistics__button{
+  margin-top:1rem;
+  display:inline-flex;
+  justify-content:center;
+  width:100%;
+  padding:.9rem 1rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:700;
+
+  background:var(--color-primary);
+  color:#fff;
+
+  transition:.3s ease;
+}
+
+.statistics__button:hover{
+  opacity:.9;
+}
+
+@media(min-width:768px){
+
+  .statistics__grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+@media(min-width:1024px){
+
+  .statistics__grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}

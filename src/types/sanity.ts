@@ -125,3 +125,21 @@ export interface PortfolioProject {
 }
 
 
+export interface StatisticItem {
+  views: string;
+  likes: string;
+  comments: string;
+  shares: string;
+  saves: string;
+  videoUrl: string;
+  phoneImage: SanityImage;
+  brand: Brand;
+  platform: string;
+}
+
+export interface StatisticsSection {
+  isActive?: boolean;
+  title: string;
+  items: StatisticItem[];
+  
+}

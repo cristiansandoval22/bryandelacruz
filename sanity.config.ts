@@ -41,7 +41,7 @@ export default defineConfig({
                   .schemaType("about")
                   .documentId("about")
               ),
-            
+
             // Services Section
             S.listItem()
               .title("SECCIÓN DE SERVICIOS")
@@ -51,7 +51,7 @@ export default defineConfig({
                   .schemaType("servicesSection")
                   .documentId("servicesSection")
               ),
-            
+
             // portfolio categories
             S.listItem()
               .title("CATEGORÍAS DE PROYECTOS")
@@ -66,7 +66,7 @@ export default defineConfig({
               .child(
                 S.documentTypeList("portfolioProject")
               ),
-            
+
             // brands
             S.listItem()
               .title("MARCAS")
@@ -74,6 +74,16 @@ export default defineConfig({
                 S.documentTypeList("brand")
               ),
 
+
+            // Statistics section
+            S.listItem()
+              .title("SECCIÓN ESTADÍSTICAS")
+              .id("statisticsSection")
+              .child(
+                S.document()
+                  .schemaType("statisticsSection")
+                  .documentId("statisticsSection")
+              ),
           ])
     })
   ],

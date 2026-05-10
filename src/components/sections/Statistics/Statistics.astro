@@ -1,0 +1,125 @@
+---
+import "./Statistics.css";
+import { client, urlFor } from "@lib/sanity";
+import { statisticsSectionQuery } from "@lib/queries";
+import type { StatisticsSection } from "@models/sanity";
+
+const statisticsSection: StatisticsSection = await client.fetch(
+    statisticsSectionQuery,
+);
+
+function getPlatformIcon(platform: string) {
+  const value = platform.toLowerCase();
+
+  if (value === "instagram") return "mdi--instagram";
+  if (value === "tiktok") return "ic--baseline-tiktok";
+  if (value === "facebook") return "ic--baseline-facebook";
+  if (value === "youtube") return "mdi--youtube";
+
+  return "streamline-plump--web";
+}
+---
+
+<!-- <pre>{JSON.stringify(statisticsSection, null, 2)}</pre> -->{
+    statisticsSection?.isActive && (
+        <section class="statistics section container">
+            <div class="statistics__header">
+                <h2 class="section-title">{statisticsSection.title}</h2>
+                <p class="statistics__subtitle">
+                    Resultados reales obtenidos con contenido estratégico.
+                </p>
+            </div>
+
+            <div class="statistics__grid">
+                {statisticsSection.items?.map((item) => (
+                    <article class="statistics__card">
+                        <div class="statistics__phone">
+                            <img
+                                src={urlFor(item.phoneImage).width(500).url()}
+                                alt={item.brand.title}
+                                class="statistics__image"
+                            />
+                        </div>
+
+                        <div class="statistics__content">
+                            <div class="flex statics__header  ">
+                                <div class="statistics__brand">
+                                    <img
+                                        src={urlFor(item.brand.logo)
+                                            .width(80)
+                                            .url()}
+                                        alt={item.brand.title}
+                                        class="statistics__logo"
+                                    />
+
+                                    <span class="statistics__name">
+                                        {item.brand.title}
+                                    </span>
+                                </div>
+
+                                <div class="statistics__platform">
+                                    <span class={`statistics__icon ${getPlatformIcon(item.platform)}`}></span>
+                                    <p>
+                                        {item.platform === "tiktok"
+                                            ? "TikTok"
+                                            : item.platform === "instagram"
+                                              ? "Instagram"
+                                              : item.platform === "youtube"
+                                                ? "YouTube"
+                                                : item.platform === "facebook"
+                                                  ? "Facebook"
+                                                  : "Otro"}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="statistics__metrics">
+                                <div class="statistics__metric">
+                                    <span class="statistics__value">
+                                        {item.views}
+                                    </span>
+                                    <span class="statistics__label">
+                                        Vistas
+                                    </span>
+                                </div>
+
+                                <div class="statistics__metric">
+                                    <span class="statistics__value">
+                                        {item.likes}
+                                    </span>
+                                    <span class="statistics__label">Likes</span>
+                                </div>
+
+                                <div class="statistics__metric">
+                                    <span class="statistics__value">
+                                        {item.comments}
+                                    </span>
+                                    <span class="statistics__label">
+                                        Comentarios
+                                    </span>
+                                </div>
+
+                                <div class="statistics__metric">
+                                    <span class="statistics__value">
+                                        {item.shares}
+                                    </span>
+                                    <span class="statistics__label">
+                                        Compartidos
+                                    </span>
+                                </div>
+                            </div>
+
+                            <a
+                                href={item.videoUrl}
+                                target="_blank"
+                                class="statistics__button"
+                            >
+                                Ver video
+                            </a>
+                        </div>
+                    </article>
+                ))}
+            </div>
+        </section>
+    )
+}
