@@ -15,3 +15,8 @@ ul,
 ol {
   padding-left: 2rem;
 }
+
+button{
+  font:inherit;
+  color:inherit;
+}
